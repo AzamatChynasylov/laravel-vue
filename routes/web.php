@@ -11,6 +11,8 @@
 |
 */
 
+use App\Http\Controllers\HomeController;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -21,3 +23,6 @@ Route::get('/admin-lte', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::get('/{any}', 'HomeController@index')->where('any', '.*');
