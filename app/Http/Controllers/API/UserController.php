@@ -14,6 +14,10 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+		public function __construct()
+    {
+        $this->middleware('auth:api');
+    }
     public function index()
     {
 				//
@@ -44,7 +48,22 @@ class UserController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
-     */
+		 */
+		public function profile()
+		{
+			return auth('api')->user();
+		}
+		public function profileUpdate(Request $request)
+		{
+			if($request->photo){
+				$name = time().'.' . explode('/', explode(':', substr($request->photo, 0, strpos($request->photo, ';')))[1])[1];
+
+            \Image::make($request->photo)->save(public_path('img/profile/').$name);
+            $request->merge(['photo' => $name]);
+			}
+			return ['photo' =>$name];
+
+		}
     public function show($id)
     {
         //

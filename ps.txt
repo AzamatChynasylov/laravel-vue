@@ -1,0 +1,6 @@
+Client ID: 1
+Client secret: 8eifrm4f2Ilrle1UGMFaPkYHz3f9g4QRZLjbq7hh
+Password grant client created successfully.
+Client ID: 2
+Client secret: WCuOgmYPMRO8VdicnQ99X9Z93DzgYtdfLsKWEsAc
+PS E:\Desktop\laravelready> Client ID: 1
