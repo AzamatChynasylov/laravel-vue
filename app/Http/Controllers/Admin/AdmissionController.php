@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Admission;
 use App\Group;
-use App\Level;
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 
-class GroupController extends Controller
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Traffic;
+
+class AdmissionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,13 +18,14 @@ class GroupController extends Controller
      */
     public function index()
     {
-				
-			return view('groups.index', [
-				'group'   => [],
-				'groups' => Group::with('children')->where('parent_id', '0')->get(),
-				'delimiter'  => ''
-			]);
-    }
+       return view('admission.index');
+		}
+		
+		public function search(Request $request)
+		{
+			dd($request->all());
+			return view('admission.index');
+		}
 
     /**
      * Show the form for creating a new resource.
@@ -31,13 +34,11 @@ class GroupController extends Controller
      */
     public function create()
     {
-				//
-				return view('groups.create', [
-					'group'   => [],
-					'groups' => Group::with('children')->where('parent_id', '0')->get(),
-					'levels' => Level::all(),
-					'delimiter'  => ''
-				]);
+			$traffics = Traffic::all();
+			$group =  [];
+			$groups = Group::with('children')->where('parent_id', '0')->get();
+			$delimiter  = '';
+			return view('admission.create', compact('group','groups','delimiter','traffics'));
     }
 
     /**
@@ -48,17 +49,16 @@ class GroupController extends Controller
      */
     public function store(Request $request)
     {
-			Group::create($request->all());
-			return redirect()->route('groups.index');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Group  $group
+     * @param  \App\Admission  $admission
      * @return \Illuminate\Http\Response
      */
-    public function show(Group $group)
+    public function show(Admission $admission)
     {
         //
     }
@@ -66,10 +66,10 @@ class GroupController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Group  $group
+     * @param  \App\Admission  $admission
      * @return \Illuminate\Http\Response
      */
-    public function edit(Group $group)
+    public function edit(Admission $admission)
     {
         //
     }
@@ -78,10 +78,10 @@ class GroupController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Group  $group
+     * @param  \App\Admission  $admission
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Group $group)
+    public function update(Request $request, Admission $admission)
     {
         //
     }
@@ -89,10 +89,10 @@ class GroupController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Group  $group
+     * @param  \App\Admission  $admission
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Group $group)
+    public function destroy(Admission $admission)
     {
         //
     }

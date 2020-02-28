@@ -10,8 +10,10 @@ try {
     window.Popper = require('popper.js').default;
     window.$ = window.jQuery = require('jquery');
 
-    require('bootstrap');
-    require('admin-lte');
+		require('bootstrap');
+		require('admin-lte/plugins/inputmask/jquery.inputmask.bundle.js');
+		require('admin-lte');
+		
 } catch (e) {}
 
 /**

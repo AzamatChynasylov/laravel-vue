@@ -20,6 +20,17 @@ Route::get('/admin-lte', function () {
     return view('layouts.master');
 });
 
+Route::resource('/groups', 'Admin\GroupController');
+
+
+Route::resource('/traffic', 'Admin\TrafficController');
+Route::resource('/levels', 'Admin\LevelController');
+Route::resource('/admission', 'Admin\AdmissionController');
+Route::post('/admission/search','Admin\AdmissionController@search')->name('admission-search');
+
+
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

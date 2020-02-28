@@ -14,7 +14,14 @@ class CreateGroupsTable extends Migration
     public function up()
     {
         Schema::create('groups', function (Blueprint $table) {
-            $table->bigIncrements('id');
+						$table->bigIncrements('id');
+						$table->tinyInteger('level_id')->nullable();
+						$table->string('title')->unique();
+            $table->integer('parent_id')->default(0);
+            $table->tinyInteger('published')->nullable();
+            $table->integer('created_by')->nullable();
+						$table->integer('modified_by')->nullable();
+						$table->softDeletes();
             $table->timestamps();
         });
     }

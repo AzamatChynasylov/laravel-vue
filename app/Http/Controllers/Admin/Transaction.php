@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Group;
-use App\Level;
 use App\Http\Controllers\Controller;
+use App\Transaction;
 use Illuminate\Http\Request;
 
-class GroupController extends Controller
+class Transaction extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,12 +15,7 @@ class GroupController extends Controller
      */
     public function index()
     {
-				
-			return view('groups.index', [
-				'group'   => [],
-				'groups' => Group::with('children')->where('parent_id', '0')->get(),
-				'delimiter'  => ''
-			]);
+        //
     }
 
     /**
@@ -31,13 +25,7 @@ class GroupController extends Controller
      */
     public function create()
     {
-				//
-				return view('groups.create', [
-					'group'   => [],
-					'groups' => Group::with('children')->where('parent_id', '0')->get(),
-					'levels' => Level::all(),
-					'delimiter'  => ''
-				]);
+        //
     }
 
     /**
@@ -48,17 +36,16 @@ class GroupController extends Controller
      */
     public function store(Request $request)
     {
-			Group::create($request->all());
-			return redirect()->route('groups.index');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Group  $group
+     * @param  \App\Transaction  $transaction
      * @return \Illuminate\Http\Response
      */
-    public function show(Group $group)
+    public function show(Transaction $transaction)
     {
         //
     }
@@ -66,10 +53,10 @@ class GroupController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Group  $group
+     * @param  \App\Transaction  $transaction
      * @return \Illuminate\Http\Response
      */
-    public function edit(Group $group)
+    public function edit(Transaction $transaction)
     {
         //
     }
@@ -78,10 +65,10 @@ class GroupController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Group  $group
+     * @param  \App\Transaction  $transaction
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Group $group)
+    public function update(Request $request, Transaction $transaction)
     {
         //
     }
@@ -89,10 +76,10 @@ class GroupController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Group  $group
+     * @param  \App\Transaction  $transaction
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Group $group)
+    public function destroy(Transaction $transaction)
     {
         //
     }
