@@ -16,4 +16,8 @@ class Admission extends Model
 		{
 			return $this->belongsToMany(Traffic::class);
 		}
+		public function phones()
+		{
+			return $this->hasMany(Phone::class);
+		}
 }

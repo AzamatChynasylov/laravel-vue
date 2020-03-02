@@ -13,11 +13,13 @@
 						<form action="">
 						<div class="card-body p-5">
 						@include('admission.partials.form')
+
+						<calendar-component></calendar-component>
+
 						</div>
 
 						<div class="card-footer ">
 							<div class="row justify-content-center">
-								
 							<button type="submit" class="btn btn-primary btn-lg">Создать</button>
 
 								

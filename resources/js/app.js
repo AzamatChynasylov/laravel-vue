@@ -10,6 +10,8 @@ window.Vue = require("vue");
 
 import moment from 'moment';
 
+window.moment = moment;
+
 import { Form, HasError, AlertError } from 'vform';
 
 window.Form = Form;
@@ -61,7 +63,8 @@ const routes = [
 		{
 			path: "/users",
 			component: require("./components/UsersComponent.vue").default
-	}
+	},
+	
 ];
 
 const router = new VueRouter({
@@ -74,9 +77,9 @@ Vue.filter('upText', function(text){
 });
 
 Vue.filter('myDate', function(registered){
-	return moment(registered).format('MMMM Do YYYY');;
+	return moment(registered).format('MMMM Do YYYY');
 });
-
+Vue.component('calendar-component', require('./components/CalendarComponent.vue').default);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

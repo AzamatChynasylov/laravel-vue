@@ -68,6 +68,12 @@
 			</a>
 		</li>
 		<li class="nav-item">
+			<a href="{{route('service.index')}}" class="nav-link">
+				<i class="fa fa-circle nav-icon"></i>
+				<p>Услуги</p>
+			</a>
+		</li>
+		<li class="nav-item">
 
 			<a class="nav-link " href="{{ route('logout') }}"
 			onclick="event.preventDefault();

@@ -21,6 +21,7 @@ Route::get('/admin-lte', function () {
 });
 
 Route::resource('/groups', 'Admin\GroupController');
+Route::resource('/service', 'Admin\ServiceController');
 
 
 Route::resource('/traffic', 'Admin\TrafficController');
