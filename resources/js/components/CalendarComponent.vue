@@ -66,11 +66,16 @@
                 />
             </div>
         </div>
+				<datepicker :highlighted="highlighted"></datepicker> 
     </div>
 </template>
 
 <script>
+import Datepicker from 'vuejs-datepicker';
 export default {
+	 components: {
+    Datepicker
+  },
     data() {
         return {
 						first_date: "",
@@ -89,6 +94,14 @@ export default {
 					//this.last_date =  moment(this.first_date, "YYYY-MM-DD").add(5, 'days');
 					//this.last_date = moment(this.first_date);
 				},
+				 highlighted: {
+          customPredictor: function (date) {
+            // highlights every day of a month which is a multiple of 4
+            if (date.getDate() % 4 === 0) {
+              return true
+            }
+          }
+        },
         addNewEvent() {},
         showEvent(arg) {},
         updateEvent() {},
