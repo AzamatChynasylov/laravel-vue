@@ -10,14 +10,11 @@
                         ><i class="fa fa-envelope"></i
                     ></span>
                 </div>
-                <input
-                    type="date"
-                    id="start_date"
-                    class="form-control"
-                    v-model="first_date"
-                    required
-										name="first_date"
-                />
+               <date-picker   v-model="first_date" 
+							 :format="format" 
+							 :disabled-date="disableWeekends"
+							 :input-attr="input_attr2" 
+							 	input-class="form-class"></date-picker > 
             </div>
         </div>
 				
@@ -25,7 +22,7 @@
             <label for="count_lesson" class="col-sm-2 col-form-label"
                 >Количество уроков</label
             >
-            <div class="col-sm-10 input-group ">
+            <div class="col-sm-4 input-group ">
                 <div class="input-group-prepend">
                     <span class="input-group-text"
                         ><i class="fa fa-envelope"></i
@@ -40,6 +37,7 @@
 										name="count_date"
 										v-on:input="countLesson"
                 />
+								
             </div>
         </div>
 
@@ -55,32 +53,40 @@
                         ><i class="fa fa-envelope"></i
                     ></span>
                 </div>
-                <input
-                    type="date"
-                    id="end_date"
-                    class="form-control"
-                    
-                    required
-										name="last_date"
-										:value="last_date"
-                />
+                <date-picker  v-model="last_date" 
+								:format="format" 
+								:disabled-date="disableWeekends" 
+								:input-attr="input_attr" 
+								input-class="form-class"></date-picker > 
             </div>
         </div>
-				<datepicker :highlighted="highlighted"></datepicker> 
+				
     </div>
 </template>
 
 <script>
-import Datepicker from 'vuejs-datepicker';
+import DatePicker from 'vue2-datepicker';
+	import 'vue2-datepicker/index.css';
+	import 'vue2-datepicker/locale/ru';
 export default {
 	 components: {
-    Datepicker
+    DatePicker
   },
     data() {
         return {
-						first_date: "",
-						last_date: "",
-						count_date:"",
+						first_date: null,
+						last_date: new Date(2019, 7, 1),
+						count_date: null,
+						format: 'D-MM-YYYY',
+						input_attr2: {
+							name: 'first_date',
+						
+						},
+						input_attr: {
+							name: 'last_date',
+						
+						},
+						
         };
     },
     created() {
@@ -94,14 +100,11 @@ export default {
 					//this.last_date =  moment(this.first_date, "YYYY-MM-DD").add(5, 'days');
 					//this.last_date = moment(this.first_date);
 				},
-				 highlighted: {
-          customPredictor: function (date) {
-            // highlights every day of a month which is a multiple of 4
-            if (date.getDate() % 4 === 0) {
-              return true
-            }
-          }
-        },
+				disableWeekends (date) {
+			const day = new Date(date).getDay()
+      return day === 0
+    },
+				
         addNewEvent() {},
         showEvent(arg) {},
         updateEvent() {},
