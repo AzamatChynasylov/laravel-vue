@@ -20,16 +20,7 @@
 	</div>
 </div>
 
-<div class="form-group row" >
-	<label for="phone" class="col-sm-2 col-form-label">Номер телефона</label>
-	<div class="col-sm-10 input-group ">
-		<div class="input-group-prepend">
-			<span class="input-group-text"><i class="fa fa-phone"></i></span>
-		</div>
-		<input type="text" class="form-control" id="phone" placeholder="Имя студента" name="phone" autocomplete="off" required>
-	</div>
-</div>
-
+<phone-component></phone-component>
 
 <div class="form-group row" >
 	<label for="email" class="col-sm-2 col-form-label">Email</label>

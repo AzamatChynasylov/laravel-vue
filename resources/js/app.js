@@ -80,6 +80,7 @@ Vue.filter('myDate', function(registered){
 	return moment(registered).format('MMMM Do YYYY');
 });
 Vue.component('calendar-component', require('./components/CalendarComponent.vue').default);
+Vue.component('phone-component', require('./components/PhoneComponent.vue').default);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
